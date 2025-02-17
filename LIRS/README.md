@@ -7,7 +7,7 @@ _Tianjun Yao, Yongqiang Chen, Kai Hu, Kun Zhang, Zhiqiang Shen_
 
 International Conference on Learning Representations 2025 (ICLR2025)
 
-<div align=center><img src="./figure.pdf" style="zoom:70%;" />
+<div align=center><img src="./figure.png" style="zoom:70%;" />
 </div>
 
 
@@ -55,7 +55,9 @@ Run `run_ood_GOOD.py` for training and evaluation for LIRS. Here is an example.
 ```
 python run_ood_GOOD.py --ood_path ood_results_GOOD/ --intra_cluster_penalty 0.1 --gamma 0.9 --intra_cluster_labels  --num_clusters 3 --nlayers 4 --epochs 100 --dataset ogbg-molbbbp --edge_dim 10 --device 0 --seed 1 --early_stop_epochs 100 --domain size  --shift covariate --spu_emb_path <embedding_path> --fname_str biased_True_explnLayer_5_explnTopK_12_explnThres_1
 ```
-Here, `--spu_emb_path` is the embedding path in `explain_res/`, and `--fname_str` is the output path for the raw results (pytorch tensors or numpy arrays).
+Here, `--spu_emb_path` is the embedding path in `explain_res/`, and `--fname_str` is the output path for the raw results (pytorch tensors or numpy arrays).  One example for `--spu_emb_path`  would be:
+
+`experiment_results/SSL_embedding/ogbg-molbbbp/size/covariate/biased_infomax_True_ignore_False/hidden_dims_64_num_layers_5/expLayer_5_expTopK_12_expThres_1/graph_emb_epoch_60_loss_-29.026.pt`
 
 
 ## Citation
