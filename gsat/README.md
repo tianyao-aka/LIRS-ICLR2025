@@ -4,4 +4,4 @@ We use _gsat_ to mark the nodes as a preprocessing step to enable the biased inf
 python run.py --dataset goodhiv --shift covariate --domain scaffold --layer 4 --device 0 --epoch 100
 ```
 
-The code will generate a dictionary of tensors with different thresholds as masking tensors, and save it to `../explain_res/` for future usage of biased infomax.
+The code will generate a dictionary of tensors with different thresholds as masking tensors, and save it to `../explain_res/` for future usage of biased infomax. Then copy the `../explain_res/` to `LIRS/`.
