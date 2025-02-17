@@ -19,7 +19,7 @@ The data used in the experiments can be downloaded from the following sources:
 Go to `dataset_gen/`, run the following command to generate SPMotif datasets with 3 invariant subgraphs and different bias coefficients:
 
 ```bash
-python gen_struc.py --bias 0.40 --nb_num 3
+python gen_struc.py --bias 0.90 --nb_num 3
 ```
 
 It will generate a SPMotif dataset with $bias=0.90$ and 3 invariant subgraphs in training and validation sets.
