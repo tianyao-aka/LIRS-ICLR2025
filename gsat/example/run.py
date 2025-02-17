@@ -66,7 +66,7 @@ def calculate_means(A: torch.Tensor, B: torch.Tensor, labels: torch.Tensor):
 
 
 
-parser.add_argument('--dataset', default='graph-sst2', type=str)
+parser.add_argument('--dataset', default='goodhiv', type=str,choices=['goodhiv','ogbg-molbbbp','ogbg-molbace'])
 parser.add_argument('--root', default='./data', type=str, help='directory for datasets.')
 parser.add_argument('--layer', default=4, type=int)
 parser.add_argument('--batch_size', default=64, type=int)
