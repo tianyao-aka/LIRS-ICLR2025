@@ -3,7 +3,7 @@ This repository is the official implementation of our paper:
 
 **Learning Graph Invariance by Harnessing Spuriosity**
 
-_Tianjun Yao, Yongqiang Chen, Kai Hu, Kun Zhang, Zhiqiang Shen_
+_Tianjun Yao, Yongqiang Chen, Kai Hu, Tongliang Liu, Kun Zhang, Zhiqiang Shen_
 
 International Conference on Learning Representations 2025 (ICLR2025)
 
