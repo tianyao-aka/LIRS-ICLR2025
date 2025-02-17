@@ -37,15 +37,12 @@ import warnings
 import random
 from datasets import spmotif_dataset
 from torch_geometric.data import Batch
-from model.BalanceSampler import BalanceSampler,create_custom_loader
 
 
 from GOOD.data.good_datasets.good_cmnist import GOODCMNIST
 from GOOD.data.good_datasets.good_motif import GOODMotif
 from GOOD.data.good_datasets.good_hiv import GOODHIV
-from datasets.drugood_dataset import DrugOOD
 from datasets.graphss2_dataset import get_dataloader_per, get_dataset
-from datasets.mnistsp_dataset import CMNIST75sp
 from ogb.graphproppred import Evaluator, PygGraphPropPredDataset
 from torch_geometric.transforms import BaseTransform
 import argparse
@@ -455,61 +452,6 @@ if "goodhiv" in args['dataset'].lower():
     args['valid_metric'] = metric_name
 
 
-if "cmnist" in args['dataset'].lower():
-    dataset, meta_info = GOODCMNIST.load("GOOD_data/", domain='color', shift='covariate', generate=False)
-    train_dataset = dataset['train']
-    val_dataset = dataset['val']
-    test_dataset = dataset['test']
-    #! load spurious emb
-    path = args['spu_emb_path']
-    print (colored(f'spu_emb path:{path}','yellow'))
-    if len(path)>4:
-        spu_emb = torch.load(path)
-    else:
-        print (colored("Spu Emb is None. Cautious!",'yellow'))
-        spu_emb = None
-    c_labels = None
-    binary_c_id = None
-    binary_c_counts = None
-    intra_cluster_logits =None
-    intra_cluster_labels = None
-    sample_weights = None
-    if args['balance_sampler']:
-        print (colored('Use balance sampler','red'))
-        spu_emb_np = np.asarray(spu_emb.cpu())
-        Y = np.asarray([train_dataset[i].y.item() for i in range(len(train_dataset))])
-        c_labels = calc_cluster_labels(spu_emb_np,Y,num_classes=3,num_clusters=3)
-
-    if args['intra_cluster_labels']:
-        print (colored('Use intra-class clustering labels','blue'))
-        Y = torch.tensor([train_dataset[i].y.item() for i in range(len(train_dataset))])
-        cluster_process = ClusterProcessor(spu_emb,Y,num_classes=10, num_clusters = args['num_clusters'],gamma=args['gamma'])
-        intra_cluster_logits,intra_cluster_labels,sample_weights = cluster_process.process()
-
-    if args['raw_labels']:
-        args['num_clusters'] = 10
-        print (colored('Use raw labels for spurious logits generation','blue'))
-        Y = torch.tensor([train_dataset[i].y.item() for i in range(len(train_dataset))])
-        cluster_process = ClusterProcessor(spu_emb,Y,num_classes=10, num_clusters = args['num_clusters'],gamma=args['gamma'])
-        intra_cluster_logits,intra_cluster_labels,sample_weights = cluster_process.process_no_cluster()   #! no clustering is performed
-
-    train_data_list = [train_dataset[i] for i in range(len(train_dataset))]
-    train_dataset = DatasetWithSpuRep(train_data_list,dataset_name='goodhiv',spu_rep=spu_emb,cluster_id=c_labels,intra_cluster_pred_logits=intra_cluster_logits, intra_cluster_labels = intra_cluster_labels,sample_weights = sample_weights)
-
-    if args['balance_sampler']:
-        train_data_list = [train_dataset[i] for i in range(len(train_dataset))]
-        train_loader = create_custom_loader(train_data_list,batch_size=args["batch_size"])
-
-    else:
-        train_loader = DataLoader(train_dataset,batch_size=args["batch_size"],num_workers=workers,shuffle=True)
-    
-    valid_loader = DataLoader(val_dataset,batch_size=args["batch_size"],shuffle=False,num_workers=workers)
-    test_loader = DataLoader(test_dataset,batch_size=args["batch_size"],shuffle=False,num_workers=workers)
-    args['nclass'] = 10
-    metric_name='acc'
-    args['valid_metric'] = metric_name
-
-
 args['device'] = 'cpu' if not torch.cuda.is_available() else args['device']
 model = ModelTrainer(**args)
 print ('fit model')
@@ -521,15 +463,6 @@ if "motif" in args['dataset'] and domain=='basis':
 res = sorted(res,key = lambda x:x[0],reverse=True)
 val_score,test_score = res[0]
 res = np.array([val_score,test_score])
-
-
-if model.delta_acc_arr is not None:
-    delta_res = model.valid_test_delta_acc_list
-    delta_res = sorted(delta_res,key = lambda x:x[0],reverse=True)
-    _,delta_acc_arr = delta_res[0]
-    print ('delta acc:')
-    print (delta_acc_arr)
-    save_numpy_array_to_file(delta_acc_arr,result_dir,"delta_acc_array")
 
 
 if args["save_test_rep"]:
