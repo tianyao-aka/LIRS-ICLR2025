@@ -7,7 +7,7 @@ _Tianjun Yao, Yongqiang Chen, Kai Hu, Kun Zhang, Zhiqiang Shen_
 
 International Conference on Learning Representations 2025 (ICLR2025)
 
-<div align=center><img src="./figure.png" style="zoom:50%;" />
+<div align=center><img src="./figure.png" style="zoom:40%;" />
 </div>
 
 
