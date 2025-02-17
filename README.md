@@ -1,2 +1,5 @@
 # LIRS-ICLR2025
-Code will be uploaded soon in February.
+
+- To mark the nodes for biased infomax learning, go to `gsat/`.
+
+- To run LIRS< go to `LIRS/`.
