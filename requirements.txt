@@ -6,16 +6,15 @@ aiosignal==1.3.1
 alabaster==0.7.16
 annotated-types==0.7.0
 antlr4-python3-runtime==4.9.3
+anyio==4.8.0
 asttokens==2.4.1
 async-timeout==4.0.3
 attrs==23.1.0
-babel==2.16.0
-beautifulsoup4==4.12.3
-Brotli @ file:///croot/brotli-split_1714483155106/work
+Brotli==1.0.9
 cachetools==5.4.0
 captum==0.2.0
 certifi==2022.12.7
-cffi @ file:///croot/cffi_1714483155441/work
+cffi==1.16.0
 charset-normalizer==2.1.1
 cilog==1.3.0
 click==8.1.8
@@ -24,11 +23,11 @@ contourpy==1.1.1
 coverage==7.6.1
 cvxopt==1.3.2
 cycler==0.12.1
-datasets==3.2.0
 decorator==5.1.1
 dgl==2.1.0
 dgllife==0.3.2
 dill==0.3.8
+distro==1.9.0
 dive-into-graphs==1.1.0
 docker-pycreds==0.4.0
 docutils==0.17.1
@@ -36,35 +35,34 @@ et-xmlfile==1.1.0
 exceptiongroup==1.2.2
 execnet==2.1.1
 executing==2.0.1
-filelock @ file:///croot/filelock_1700591183607/work
+filelock==3.13.1
 fonttools==4.46.0
 frozenlist==1.4.0
-fsspec @ file:///croot/fsspec_1714461537038/work
+fsspec==2024.3.1
 future==1.0.0
-gdown==5.2.0
 gitdb==4.0.12
 GitPython==3.1.44
-gmpy2 @ file:///tmp/build/80754af9/gmpy2_1645438755360/work
-google-auth==2.32.0
-google-auth-oauthlib==0.4.6
-googledrivedownloader==0.4
--e git+https://github.com/divelab/GOOD.git@fff0e2dc311e1d0e0a23052f6c601db4f185e12e#egg=graph_ood
+gmpy2==2.1.2
+graph-ood==1.1.1
 graphviz==0.20.3
 grpcio==1.64.1
+h11==0.14.0
 h5py==3.11.0
 higher==0.2.1
-huggingface-hub==0.28.1
+httpcore==1.0.7
+httpx==0.28.1
 hydra-core==1.3.2
 hyperopt==0.2.7
 idna==3.4
 imageio==2.35.1
 imagesize==1.4.1
-importlib-resources==6.1.1
 importlib_metadata==8.0.0
+importlib-resources==6.1.1
 iniconfig==2.0.0
 ipython==8.18.1
 jedi==0.19.1
 Jinja2==3.1.2
+jiter==0.8.2
 joblib==1.3.2
 kiwisolver==1.4.5
 kmeans-pytorch==0.3
@@ -73,14 +71,14 @@ lightning-utilities==0.10.0
 littleutils==0.2.2
 llvmlite==0.41.1
 Markdown==3.6
-MarkupSafe @ file:///croot/markupsafe_1704205993651/work
+MarkupSafe==2.1.3
 matplotlib==3.5.2
 matplotlib-inline==0.1.7
-mkl-fft @ file:///croot/mkl_fft_1695058164594/work
-mkl-random @ file:///croot/mkl_random_1695059800811/work
+mkl-fft==1.3.8
+mkl-random==1.2.4
 mkl-service==2.4.0
 mmcv==1.4.8
-mpmath @ file:///croot/mpmath_1690848262763/work
+mpmath==1.3.0
 multidict==6.0.4
 multiprocess==0.70.16
 munch==2.5.0
@@ -115,6 +113,7 @@ nvidia-nvtx-cu12==12.4.127
 oauthlib==3.2.2
 ogb==1.3.6
 omegaconf==2.3.0
+openai==0.28.0
 opencv-python==4.10.0.84
 openpyxl==3.1.5
 outdated==0.2.2
@@ -123,6 +122,7 @@ pandas==2.0.3
 parso==0.8.4
 pexpect==4.9.0
 Pillow==9.3.0
+pip==24.2
 platformdirs==4.2.2
 pluggy==1.5.0
 prompt_toolkit==3.0.47
@@ -136,17 +136,17 @@ pyarrow==16.1.0
 pyarrow-hotfix==0.6
 pyasn1==0.6.0
 pyasn1_modules==0.4.0
-pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
+pycparser==2.21
 pydantic==2.8.2
 pydantic_core==2.20.1
-pyg-lib==0.4.0+pt22cu118
+pyg-lib==0.4.0+pt25cu124
 PyGCL==0.1.2
 Pygments==2.18.0
 PyMetis==2023.1.1
 pynvml==11.5.0
 pyparsing==3.1.1
 pyscf==2.6.2
-PySocks @ file:///tmp/build/80754af9/pysocks_1605305812635/work
+PySocks==1.7.1
 pytest==7.1.2
 pytest-cov==3.0.0
 pytest-forked==1.6.0
@@ -155,11 +155,11 @@ python-dateutil==2.8.2
 python-louvain==0.16
 pytorch-lightning==2.1.2
 pytz==2023.3.post1
-PyYAML @ file:///croot/pyyaml_1698096049011/work
+PyYAML==6.0.1
 rdkit==2024.3.3
 rdkit-pypi==2022.9.5
 regex==2024.5.15
-requests @ file:///croot/requests_1721410876868/work
+requests==2.32.3
 requests-oauthlib==2.0.0
 rsa==4.9
 ruamel.yaml==0.17.21
@@ -171,10 +171,12 @@ scipy==1.10.1
 seaborn==0.13.2
 sentry-sdk==2.20.0
 setproctitle==1.3.4
+setuptools==59.5.0
 shap==0.46.0
 six==1.16.0
 slicer==0.0.8
 smmap==5.0.2
+sniffio==1.3.1
 snowballstemmer==2.2.0
 soupsieve==2.5
 Sphinx==5.3.0
@@ -198,11 +200,11 @@ tifffile==2024.8.10
 tokenizers==0.19.1
 tomli==2.0.1
 torch==2.6.0
+torch_cluster==1.6.3+pt25cu124
 torch-geometric==2.6.1
-torch_cluster==1.6.3+pt25cu121
-torch_scatter==2.1.2+pt25cu121
+torch_scatter==2.1.2+pt25cu124
 torch_sparse==0.6.18+pt25cu121
-torch_spline_conv==1.2.2+pt25cu121
+torch_spline_conv==1.2.2+pt25cu124
 torchaudio==2.2.0
 torchdata==0.7.1
 torchmetrics==1.2.1
@@ -210,19 +212,15 @@ torchvision==0.17.0
 torchviz==0.0.2
 tqdm==4.67.1
 traitlets==5.14.3
-transformers==4.43.2
 triton==3.0.0
 typed-argument-parser==1.7.2
+typing_extensions==4.11.0
 typing-inspect==0.9.0
-typing_extensions @ file:///croot/typing_extensions_1715268824938/work
 tzdata==2023.3
 umap==0.1.1
 urllib3==1.26.13
-wandb==0.17.4
-wcwidth==0.2.13
-Werkzeug==3.0.3
+wheel==0.43.0
 wilds==2.0.0
-xformers==0.0.29.post3
 xxhash==3.5.0
 yacs==0.1.8
 yapf==0.40.2
